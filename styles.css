@@ -1,497 +1,304 @@
-/* === Reset & Base === */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* ===== Reset & base ===== */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --purple-deep: #4A0E8F;
-  --purple-mid: #6B2FD6;
-  --purple-light: #9B6FE8;
-  --purple-ultralight: #C8A8F5;
-  --purple-bg: #E8D5FF;
-  --white: #FFFFFF;
-  --gray-50: #F9FAFB;
-  --gray-100: #F3F4F6;
-  --gray-200: #E5E7EB;
-  --gray-400: #9CA3AF;
-  --gray-600: #4B5563;
-  --gray-900: #111827;
-  --radius-sm: 12px;
-  --radius-md: 16px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  --purple-deep: #45189e;
+  --purple: #6321cf;
+  --purple-bright: #7c3aed;
+  --accent: #6d28d9;
+  --ink: #14122b;
+  --ink-soft: #8b8aa0;
+  --white: #ffffff;
+  --card-radius: 18px;
 }
+
+html, body { height: 100%; }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(135deg, #C8A8F5 0%, #E8D5FF 50%, #D4B8F8 100%);
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #b6a4f0;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  min-height: 100vh;
+}
+
+/* ===== Screen (solo la pantalla, sin bisel) ===== */
+.screen {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-/* === Phone Frame === */
-.phone-frame {
-  width: 375px;
-  height: 812px;
-  border-radius: 52px;
-  border: 8px solid #1a1a1a;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 
-    0 0 0 2px #333,
-    0 40px 80px rgba(74, 14, 143, 0.3),
-    0 20px 40px rgba(0, 0, 0, 0.2);
-  background: var(--white);
-}
-
-.phone-notch {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 160px;
-  height: 30px;
-  background: #1a1a1a;
-  border-radius: 0 0 20px 20px;
-  z-index: 100;
-}
-
-.app {
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  display: flex;
   flex-direction: column;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      180deg,
+      #45189e 0%,
+      #521bb6 18%,
+      #6321cf 34%,
+      #7434e0 48%,
+      #8b57e8 58%,
+      #ffffff 70%,
+      #ffffff 100%
+    );
 }
 
-.app::-webkit-scrollbar {
-  display: none;
+@media (min-width: 440px) {
+  body { padding: 0; }
+  .screen {
+    min-height: 100vh;
+    border-radius: 0;
+  }
 }
 
-/* === Status Bar === */
-.status-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 24px 0;
+/* ===== Status bar ===== */
+.statusbar {
   position: relative;
-  z-index: 10;
+  height: 52px;
+  padding: 0 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  flex-shrink: 0;
 }
-
-.time {
-  font-size: 15px;
+.statusbar .time {
   font-weight: 600;
-  color: var(--white);
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  padding-left: 6px;
 }
-
-.status-icons {
+.statusbar .island {
+  position: absolute;
+  left: 50%;
+  top: 9px;
+  transform: translateX(-50%);
+  width: 108px;
+  height: 30px;
+  background: #000;
+  border-radius: 20px;
+}
+.statusbar .indicators {
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.status-icons svg {
-  width: auto;
-  height: 12px;
-}
-
-/* === Header Section === */
-.header-section {
-  background: linear-gradient(180deg, #5A1BA8 0%, #7B3FD9 40%, #A06DE8 75%, #C9A3F5 100%);
-  padding: 0 20px 24px;
-  border-radius: 0 0 30px 30px;
-  position: relative;
-}
-
-.top-nav {
+/* ===== Content ===== */
+.content {
+  flex: 1;
+  padding: 4px 20px 0;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 0 8px;
+  flex-direction: column;
 }
 
+/* ===== Header ===== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 2px 0;
+}
 .avatar {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: #d9d0f5;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
 }
+.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.chat-btn {
-  width: 40px;
-  height: 40px;
+.icon-btn {
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: none;
+  display: grid;
+  place-items: center;
+  color: #fff;
   cursor: pointer;
-  transition: background 0.2s;
+}
+.glass {
+  background: rgba(255,255,255,.16);
+  backdrop-filter: blur(6px);
 }
 
-.chat-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* === Balance === */
-.balance-section {
+/* ===== Balance ===== */
+.balance {
   text-align: center;
-  padding: 20px 0 24px;
+  margin-top: 34px;
+  color: #fff;
 }
-
 .balance-amount {
-  font-size: 42px;
-  font-weight: 800;
-  color: var(--white);
-  letter-spacing: -1px;
-  line-height: 1;
-  margin-bottom: 6px;
-}
-
-.balance-available {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.75);
-  font-weight: 500;
-}
-
-/* === Pocket Card === */
-.pocket-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  border-radius: var(--radius-md);
-  padding: 14px 16px;
-  backdrop-filter: blur(10px);
-}
-
-.pocket-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.pocket-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pocket-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.pocket-name {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--white);
-}
-
-.pocket-type {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
-  font-weight: 400;
-}
-
-.pocket-balance {
-  font-size: 18px;
+  font-size: 43px;
   font-weight: 700;
-  color: var(--white);
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+.balance-sub {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255,255,255,.82);
 }
 
-/* === Content Section === */
-.content-section {
-  background: var(--white);
-  flex: 1;
-  padding: 20px 20px 0;
+/* ===== Plum badge (smiley) ===== */
+.plum-badge {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #8b5cf6, #6321cf 75%);
+  flex-shrink: 0;
 }
+.plum-badge.lg { width: 44px; height: 44px; }
+.plum-badge.sm { width: 34px; height: 34px; }
+.plum-face { width: 66%; height: 66%; }
 
-/* === Action Buttons === */
-.action-buttons {
+/* ===== Pocket card (glass) ===== */
+.pocket-card {
+  margin-top: 26px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.13);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(8px);
+  color: #fff;
+}
+.pocket-info { flex: 1; }
+.pocket-title { font-size: 18px; font-weight: 600; }
+.pocket-desc { font-size: 13px; color: rgba(255,255,255,.72); margin-top: 1px; }
+.pocket-amount { font-size: 18px; font-weight: 700; }
+
+/* ===== Actions ===== */
+.actions {
+  margin-top: 16px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-bottom: 20px;
+  gap: 11px;
 }
-
-.action-btn {
+.action {
+  background: #fff;
+  border: none;
+  border-radius: var(--card-radius);
+  padding: 14px 4px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 14px 8px;
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-sm);
+  gap: 9px;
   cursor: pointer;
-  transition: all 0.2s;
+  box-shadow: 0 6px 16px rgba(40,10,90,.10);
 }
-
-.action-btn:hover {
-  background: var(--gray-100);
-  transform: translateY(-1px);
-}
-
-.action-btn:active {
-  transform: translateY(0);
-}
-
 .action-icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 26px;
+  height: 26px;
+  color: var(--accent);
+  display: grid;
+  place-items: center;
 }
+.action-icon svg { width: 100%; height: 100%; }
+.action-label { font-size: 13px; font-weight: 500; color: #201d3a; }
 
-.action-btn span {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--gray-900);
-}
-
-/* === Product Cards === */
-.product-cards {
+/* ===== Savings cards ===== */
+.savings {
+  margin-top: 12px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  margin-bottom: 24px;
 }
-
-.product-card {
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-md);
-  padding: 16px;
+.savings-card {
+  background: #fff;
+  border-radius: var(--card-radius);
+  padding: 15px 16px 16px;
+  box-shadow: 0 6px 16px rgba(40,10,90,.10);
 }
+.savings-head { display: flex; align-items: center; gap: 9px; }
+.savings-name { font-size: 15px; font-weight: 600; color: #201d3a; }
+.savings-rate { margin-top: 14px; font-size: 20px; font-weight: 700; color: #14122b; }
+.savings-note { margin-top: 2px; font-size: 12.5px; color: var(--ink-soft); }
 
-.product-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.product-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-icon.purple-gradient {
-  background: linear-gradient(135deg, #7B3FD9, #A06DE8);
-}
-
-.product-icon.purple-solid {
-  background: var(--purple-mid);
-}
-
-.product-name {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--purple-mid);
-}
-
-.product-rate {
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--gray-900);
-  margin-bottom: 4px;
-}
-
-.product-desc {
-  font-size: 12px;
-  color: var(--gray-400);
-  font-weight: 400;
-}
-
-/* === Pockets Section === */
-.pockets-section {
-  padding-bottom: 20px;
-}
-
-.pockets-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 16px;
-}
-
-.pockets-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--gray-900);
-  margin-bottom: 2px;
-}
-
-.pockets-subtitle {
-  font-size: 13px;
-  color: var(--gray-400);
-  font-weight: 400;
-}
-
-.create-btn {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--purple-mid);
+/* ===== Pockets ===== */
+.pockets { margin-top: 22px; padding-bottom: 8px; }
+.pockets-head { display: flex; align-items: center; justify-content: space-between; }
+.pockets-title { font-size: 20px; font-weight: 700; color: #14122b; }
+.link {
   background: none;
   border: none;
-  cursor: pointer;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.create-btn:hover {
-  color: var(--purple-deep);
-}
-
-/* === Pocket Item === */
-.pocket-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
-  border-radius: var(--radius-md);
-  padding: 16px;
-}
-
-.pocket-item-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.pocket-item-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--purple-mid);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pocket-item-name {
+  color: var(--accent);
+  font-family: inherit;
   font-size: 15px;
   font-weight: 600;
-  color: var(--gray-900);
+  cursor: pointer;
 }
+.pockets-sub { margin-top: 2px; font-size: 13px; color: var(--ink-soft); }
 
-.pocket-item-right {
+.pocket-item {
+  margin-top: 16px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border-radius: var(--card-radius);
+  padding: 16px 18px;
+  box-shadow: 0 8px 22px rgba(40,10,90,.10);
 }
-
-.pocket-item-amount {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--gray-900);
+.round-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #9b6bff, #6321cf 80%);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
 }
+.round-icon svg { width: 24px; height: 24px; }
+.pocket-item-name { flex: 1; font-size: 16px; font-weight: 600; color: #201d3a; }
+.pocket-item-right { text-align: right; }
+.pocket-item-amount { font-size: 16px; font-weight: 700; color: #14122b; }
+.pocket-item-goal { font-size: 12px; color: var(--ink-soft); margin-top: 1px; }
 
-.pocket-item-goal {
-  font-size: 12px;
-  color: var(--gray-400);
-}
-
-/* === Bottom Navigation === */
+/* ===== Bottom nav ===== */
 .bottom-nav {
+  margin: 6px 16px 14px;
+  height: 68px;
+  background: #f1f1f4;
+  border-radius: 24px;
   display: flex;
+  align-items: center;
   justify-content: space-around;
-  align-items: center;
-  padding: 12px 20px 28px;
-  background: var(--white);
-  border-top: 1px solid var(--gray-200);
-  position: sticky;
-  bottom: 0;
+  padding: 0 14px;
+  flex-shrink: 0;
 }
-
 .nav-item {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 46px;
+  height: 46px;
   border: none;
   background: none;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  color: #1c1a2e;
   cursor: pointer;
-  border-radius: 50%;
-  transition: background 0.2s;
+}
+.nav-item svg { width: 26px; height: 26px; }
+.nav-item.active {
+  background: #17151f;
+  color: #fff;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  box-shadow: 0 8px 18px rgba(0,0,0,.22);
 }
 
-.nav-item:hover {
-  background: var(--gray-100);
-}
-
-.nav-active-bg {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--gray-900);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* === Responsive === */
-@media (max-width: 420px) {
-  body {
-    padding: 0;
-    background: var(--white);
-  }
-
-  .phone-frame {
-    width: 100%;
-    height: 100vh;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-  }
-
-  .phone-notch {
-    display: none;
-  }
-}
-
-/* === Reduced Motion === */
 @media (prefers-reduced-motion: reduce) {
-  .action-btn {
-    transition: none;
-  }
-
-  .chat-btn {
-    transition: none;
-  }
-}
-
-/* === Focus states for accessibility === */
-button:focus-visible {
-  outline: 2px solid var(--purple-mid);
-  outline-offset: 2px;
+  * { transition: none !important; animation: none !important; }
 }

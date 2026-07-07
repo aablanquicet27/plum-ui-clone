@@ -1,41 +1,39 @@
-# Plum App UI Clone
+# Pocket — Plum-style Mobile UI
 
-Pixel-perfect replica of the Plum fintech app savings screen, built with pure HTML & CSS.
+Réplica **pixel a pixel** de una pantalla de app fintech (estilo Plum): degradado púrpura que se
+funde a blanco, tarjeta de balance, acciones rápidas, tarjetas de ahorro y bottom nav.
+Solo la **UI interior** de la pantalla (sin bisel del teléfono), HTML + CSS puro, sin dependencias
+ni build.
 
-## Preview
+## Vista previa
 
-A faithful recreation of Plum's savings/pockets interface featuring:
-- Purple gradient header with balance display
-- Pocket card with glassmorphism effect
-- Action buttons (Deposit, Withdraw, Brain, Splitter)
-- Product cards (Cash ISA, Plum Interest)
-- Pockets section with goals
-- Bottom navigation bar
-- iPhone frame wrapper
+Abre `index.html` en el navegador. En móvil ocupa toda la pantalla; en escritorio se muestra
+centrada al ancho de un teléfono (420 px) sobre un lienzo lila.
 
-## Tech Stack
+## Estructura
 
-- HTML5 (semantic)
-- CSS3 (Custom Properties, Grid, Flexbox, Backdrop Filter)
-- Google Fonts (Inter)
-- No JavaScript dependencies
-- Fully responsive (mobile-first)
+```
+plum-ui-clone/
+├── index.html   # markup de la pantalla (status bar, header, balance, tarjetas, nav)
+├── styles.css   # degradado, tipografía Poppins, tarjetas, iconos y bottom nav
+└── README.md
+```
 
-## Run Locally
+## Detalles de diseño
 
-Just open `index.html` in any browser. No build step required.
+- **Tipografía:** Poppins (Google Fonts), la sans geométrica redondeada que más se acerca a la de Plum.
+- **Color:** degradado vertical `#45189e → #6321cf → #8b57e8 → #ffffff` que blanquea justo antes de "Pockets".
+- **Iconos:** SVG en línea (stroke), sin librerías externas.
+- **Componentes:** status bar con dynamic island, tarjeta *Pocket* tipo glass, 4 acciones
+  (Deposit / Withdraw / Brain / Splitter), tarjetas *Cash ISA* y *Plum Interest*, sección *Pockets*
+  y bottom nav con el botón de ahorros activo (negro).
+- **Accesibilidad:** contraste alto, `aria-label` en botones de icono y `prefers-reduced-motion`.
 
-## Design Tokens
+## Uso
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--purple-deep` | `#4A0E8F` | Darkest purple |
-| `--purple-mid` | `#6B2FD6` | Primary brand |
-| `--purple-light` | `#9B6FE8` | Gradients |
-| `--purple-ultralight` | `#C8A8F5` | Backgrounds |
-| `--gray-900` | `#111827` | Text primary |
-| `--gray-400` | `#9CA3AF` | Text secondary |
+```bash
+open index.html      # macOS
+xdg-open index.html  # Linux
+```
 
-## License
-
-Educational purposes only. Plum brand and design belong to Plum Fintech Ltd.
+> UI de demostración con fines de práctica de diseño. "Plum" es marca de sus respectivos dueños.
